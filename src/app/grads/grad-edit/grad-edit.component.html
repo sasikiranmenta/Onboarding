@@ -1,0 +1,104 @@
+<div class="row">
+    <div class="col-xs-12">
+        <form [formGroup]="gradform" (ngSubmit) = "onSubmit()">
+            <div class="row">
+                <div class="col-xs-12">
+                    <button type="submit" class="btn btn-success" [disabled]="!gradform.valid" >SAVE</button>
+                    <button type="button" class=" btn btn-danger" (click) = "onClear()" >CLEAR</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12" class="form-group">
+                    <label for="Id">ID</label>
+                    <p *ngIf="false" id="Id" class="form-control">grad Id</p>
+                    <input *ngIf="true" type="number" id="name" class="form-control" formControlName="demandId">
+                </div>
+
+                <div class="col-xs-2">
+                    <label for="name">NAME</label>
+                </div>
+                <div class="col-xs-9">
+                    <input type="text" id="name" class="form-control" formControlName="name" >
+                </div>
+
+                <div class="col-xs-2">
+                    <label for="email">EMAIL</label>
+                </div>
+                <div class="col-xs-9">
+                    <input type="email" id="email" class="form-control" formControlName="email">
+                </div>
+
+                <div class="col-xs-2">
+                    <label for="college">COLLEGE</label>
+                </div>
+                <div class="col-xs-9">
+                    <input type="text" id="college" class="form-control" formControlName="college">
+                </div>
+
+                <div class="col-xs-2">
+                    <label for="cgpa">CGPA</label>
+                </div>
+                <div class="col-xs-9">
+                    <input type="number" id="cgpa" class="form-control" formControlName="cgpa">
+                </div>
+
+                <div class="col-xs-2">
+                    <label for="contact">CONTACT NUMBER</label>
+                </div>
+                <div class="col-xs-9">
+                    <input type="number" id="contact" class="form-control" formControlName="personalNumber">
+                </div>
+
+                <div class="col-xs-2">
+                    <label for="permaddress">PERMANENT ADDRESS</label>
+                </div>
+                <div class="col-xs-9">
+                    <textarea type="text" id="permaddress" rows="5" class="form-control" formControlName="permanentAddress"></textarea>
+                </div>
+
+                <div class="col-xs-2">
+                    <label for="presaddress">PRESENT ADDRESS</label>
+                </div>
+                <div class="col-xs-9">
+                    <textarea type="text" id="presaddress" rows="5" class="form-control" formControlName="presentAddress"></textarea>
+                </div>
+
+                <div class="col-xs-2">
+                    <label for="loaction">LOCATION</label>
+                </div>
+                <div class="col-xs-9">
+                    <input type="text" id="loaction" class="form-control" formControlName="location">
+                </div>
+
+                <div class="col-xs-2">
+                    <label for="onboarding">ONBOARDING DATE</label>
+                </div>
+                <div class="col-xs-9">
+                    <input type="date" id="onboarding" class="form-control" formControlName="onboardingStart">
+                </div>
+
+                <div class="col-xs-2">
+                    <label for="eta">ETA FOR COMPLETION</label>
+                </div>
+                <div class="col-xs-9">
+                    <input type="date" id="eta" class="form-control" formControlName="eta">
+                </div>
+                <div class="col-xs-2">
+                    <label for="onboardingstatus">ONBOARDING STATUS</label>
+                </div>
+                <div class="col-xs-9">
+                    <input type="number" id="onboardingstatus" class="form-control" formControlName="onboardingStatus">
+                </div>
+
+
+                <div class="col-xs-2">
+                    <label for="bgv">BACKGROUND VERIFICATION</label>
+                </div>
+                <div class="col-xs-9">
+                    <input type=number id="bgc" class="form-control" formControlName="bgvCheck">
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>

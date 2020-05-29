@@ -1,0 +1,104 @@
+<div class="container">
+<div class="row">
+    <!-- <div class="col-xs-12">
+        <img src="" alt= "heloo" class = "img-responsive" style= "max-width: 300px;">
+    </div> -->
+</div>
+
+<div class="row">
+    <div class="col-xs-5">
+        <h1>{{ grad.name }}</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <div class = "btn-group" appDropdown>
+            <button type="button" class = "btn btn-primary dropdown-toggle" appDropdown>MANAGE GRAD<span class="caret"></span></button>
+            <ul class = "dropdown-menu" >
+                <li routerLink = "edit"><a style="cursor: pointer;">Edit Grad</a></li>
+                <li><a style="cursor: pointer;">Delete Grad</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-4">
+        <label><h3><span class="label label-default">Demand Id</span></h3></label>
+    </div>
+    <div class="col-xs-8">
+        <label><h3>{{ grad.demandId }}</h3></label>
+    </div>
+    <div class="col-xs-4">
+        <label><h3><span class="label label-default">Name</span></h3></label>
+    </div>
+    <div class="col-xs-8">
+        <label><h3>{{ grad.name }}</h3></label>
+    </div>
+    <div class="col-xs-4">
+        <label><h3><span class="label label-default">Email</span></h3></label>
+    </div>
+    <div class="col-xs-8">
+        <label><h3>{{ grad.email }}</h3></label>
+    </div>
+    <div class="col-xs-4">
+        <label><h3><span class="label label-default">College</span></h3></label>
+    </div>
+    <div class="col-xs-8">
+        <label><h3>{{ grad.college }}</h3></label>
+    </div>
+    <div class="col-xs-4">
+        <label><h3><span class="label label-default">CGPA</span></h3></label>
+    </div>
+    <div class="col-xs-8">
+        <label><h3>{{ grad.cgpa }}</h3></label>
+    </div>
+    <div class="col-xs-4">
+        <label><h3><span class="label label-default">Contact Number</span></h3></label>
+    </div>
+    <div class="col-xs-8">
+        <label><h3>{{ grad.personalNumber }}</h3></label>
+    </div>
+    <div class="col-xs-4">
+        <label><h3><span class="label label-default">Permanent Address</span></h3></label>
+    </div>
+    <div class="col-xs-8">
+        <label><h3>{{ grad.permanentAddress }}</h3></label>
+    </div>
+    <div class="col-xs-4">
+        <label><h3><span class="label label-default">Present Address</span></h3></label>
+    </div>
+    <div class="col-xs-8">
+        <label><h3>{{ grad.presentAddress }}</h3></label>
+    </div>
+    <div class="col-xs-4">
+        <label><h3><span class="label label-default">Location</span></h3></label>
+    </div>
+    <div class="col-xs-8">
+        <label><h3>{{ grad.location }}</h3></label>
+    </div>
+    <div class="col-xs-4">
+        <label><h3><span class="label label-default">Onboarding Date</span></h3></label>
+    </div>
+    <div class="col-xs-8">
+        <label><h3>{{ grad.onboardingStart }}</h3></label>
+    </div>
+    <div class="col-xs-4">
+        <label><h3><span class="label label-default">ETA For Completion</span></h3></label>
+    </div>
+    <div class="col-xs-8">
+        <label><h3>{{ grad.eta }}</h3></label>
+    </div>
+    <div class="col-xs-4">
+        <label><h3><span class="label label-default">Background Verification</span></h3></label>
+    </div>
+    <div class="col-xs-8">
+        <label><h3> {{ grad.bgvCheck ? "VERIFIED" : "PENDING" }} </h3></label>
+    </div>
+    <div class="col-xs-4">
+        <label><h3><span class="label label-default">Onboarding Status</span></h3></label>
+    </div>
+    <div class="col-xs-8">
+        <label><h3>{{ grad.onboardingStatus? "CONFIRMED" : "PENDING" }}</h3></label>
+    </div>
+  </div>
+</div>
