@@ -15,8 +15,8 @@ export class GradDetailComponent implements OnInit {
   id: number;
 
   constructor(private router: Router,
-    private route: ActivatedRoute,
-    private gradsService: GradsService) { }
+              private route: ActivatedRoute,
+              private gradsService: GradsService,) { }
 
 
 
@@ -26,9 +26,13 @@ export class GradDetailComponent implements OnInit {
       .subscribe(
         (params: Params) => {
           this.id = +params['id'];
-          this.grad = this.gradsService.getGrad(this.id); 
+          this.grad = this.gradsService.getGrad(this.id);
         });
-console.log(this.grad.permanentAddress);
+    console.log(this.grad.permanentAddress);
+  }
+  onDelete() {
+    this.gradsService.deletegrad(this.id);
+    this.router.navigate(['/grads']);
   }
 
 }

@@ -11,9 +11,9 @@ export class GradsService {
     gradsChanged = new Subject<GradDetails[]>();
 
     private grads: GradDetails[] = [
-        new GradDetails(1, 'sasikiran', 'sasikiranmenta@gmail.com', 'ssn college', 8, 90101804449, 'mungamuri vari street', 'mungamuri vari street', 'banglore', '2020-05-15', '2020-05-15', false, false),
+        new GradDetails(1, 10, 'sasikiran', 'sasikiranmenta@gmail.com', 'ssn college', 8, 90101804449, 'mungamuri vari street', 'mungamuri vari street', 'banglore', '2020-05-15', '2020-05-15', 'verified', 'verified'),
 
-        new GradDetails(2, 'sasikiran', 'sasikiranmenta@gmail.com', 'ssn college', 9, 90101804449, 'mungamuri vari street', 'mungamuri vari street', 'banglore', '2020-05-15' , '2020-05-15', false, true)
+        new GradDetails(2, 10, 'sasikiran', 'sasikiranmenta@gmail.com', 'ssn college', 9, 90101804449, 'mungamuri vari street', 'mungamuri vari street', 'banglore', '2020-05-15' , '2020-05-15', 'pending', 'verified')
     ];
 
     getGrads() {
@@ -36,6 +36,11 @@ export class GradsService {
 
     updateGrad(index: number, grad: GradDetails){
         this.grads[index] = grad;
+        this.gradsChanged.next(this.grads.slice());
+    }
+
+    deletegrad(index: number){
+        this.grads.splice(index, 1);
         this.gradsChanged.next(this.grads.slice());
     }
 

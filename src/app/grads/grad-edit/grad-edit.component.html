@@ -4,15 +4,21 @@
             <div class="row">
                 <div class="col-xs-12">
                     <button type="submit" class="btn btn-success" [disabled]="!gradform.valid" >SAVE</button>
-                    <button type="button" class=" btn btn-danger" (click) = "onClear()" >CLEAR</button>
+                    <button type="button" class=" btn btn-danger" (click) = "onClear()" >CANCEL</button>
                 </div>
             </div>
             <div class="row">
                 <div class="col-xs-12" class="form-group">
                     <label for="Id">ID</label>
-                    <p *ngIf="false" id="Id" class="form-control">grad Id</p>
+                    <p *ngIf="!editmode" id="Id" class="form-control">grad Id</p>
+                    <input *ngIf="editmode" type="number" id="name" class="form-control" formControlName="gradId">
+                </div>
+
+                <div class="col-xs-12" class="form-group">
+                    <label for="Id">DEMAND ID</label>
                     <input *ngIf="true" type="number" id="name" class="form-control" formControlName="demandId">
                 </div>
+
 
                 <div class="col-xs-2">
                     <label for="name">NAME</label>
@@ -87,7 +93,7 @@
                     <label for="onboardingstatus">ONBOARDING STATUS</label>
                 </div>
                 <div class="col-xs-9">
-                    <input type="number" id="onboardingstatus" class="form-control" formControlName="onboardingStatus">
+                    <input type="string" id="onboardingstatus" class="form-control" formControlName="onboardingStatus">
                 </div>
 
 
@@ -95,7 +101,7 @@
                     <label for="bgv">BACKGROUND VERIFICATION</label>
                 </div>
                 <div class="col-xs-9">
-                    <input type=number id="bgc" class="form-control" formControlName="bgvCheck">
+                    <input type="string" id="bgc" class="form-control" formControlName="bgvCheck">
                 </div>
 
             </div>

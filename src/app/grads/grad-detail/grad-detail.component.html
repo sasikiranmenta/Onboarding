@@ -16,12 +16,18 @@
             <button type="button" class = "btn btn-primary dropdown-toggle" appDropdown>MANAGE GRAD<span class="caret"></span></button>
             <ul class = "dropdown-menu" >
                 <li routerLink = "edit"><a style="cursor: pointer;">Edit Grad</a></li>
-                <li><a style="cursor: pointer;">Delete Grad</a></li>
+                <li><a style="cursor: pointer;" (click)="onDelete()" >Delete Grad</a></li>
             </ul>
         </div>
     </div>
 </div>
 <div class="row">
+    <div class="col-xs-4">
+        <label><h3><span class="label label-default">Id</span></h3></label>
+    </div>
+    <div class="col-xs-8">
+        <label><h3>{{ grad.id }}</h3></label>
+    </div>
     <div class="col-xs-4">
         <label><h3><span class="label label-default">Demand Id</span></h3></label>
     </div>
@@ -80,25 +86,25 @@
         <label><h3><span class="label label-default">Onboarding Date</span></h3></label>
     </div>
     <div class="col-xs-8">
-        <label><h3>{{ grad.onboardingStart }}</h3></label>
+        <label><h3>{{ grad.onboardingStart | date }}</h3></label>
     </div>
     <div class="col-xs-4">
         <label><h3><span class="label label-default">ETA For Completion</span></h3></label>
     </div>
     <div class="col-xs-8">
-        <label><h3>{{ grad.eta }}</h3></label>
+        <label><h3>{{ grad.eta | date }}</h3></label>
     </div>
     <div class="col-xs-4">
         <label><h3><span class="label label-default">Background Verification</span></h3></label>
     </div>
     <div class="col-xs-8">
-        <label><h3> {{ grad.bgvCheck ? "VERIFIED" : "PENDING" }} </h3></label>
+        <label><h3> {{ grad.bgvCheck }} </h3></label>
     </div>
     <div class="col-xs-4">
         <label><h3><span class="label label-default">Onboarding Status</span></h3></label>
     </div>
     <div class="col-xs-8">
-        <label><h3>{{ grad.onboardingStatus? "CONFIRMED" : "PENDING" }}</h3></label>
+        <label><h3>{{ grad.onboardingStatus }}</h3></label>
     </div>
   </div>
 </div>

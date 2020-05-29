@@ -32,6 +32,7 @@ export class GradEditComponent implements OnInit {
 
   private initform() {
     let gradid ;
+    let demandId;
     let gradname = '';
     let grademail = '';
     let gradcollege = '';
@@ -42,13 +43,14 @@ export class GradEditComponent implements OnInit {
     let gradlocation = '';
     let gradonboarstart;
     let gradeta;
-    let gradbgc;
-    let gradonboardingstatus;
+    let gradbgc ='';
+    let gradonboardingstatus='';
 
 
     if (this.editmode) {
       const grad = this.gradsService.getGrad(this.id);
-      gradid = grad.demandId;
+      gradid = grad.id;
+      demandId = grad.demandId;
       gradname = grad.name;
       grademail = grad.email;
       gradcollege = grad.college;
@@ -64,7 +66,8 @@ export class GradEditComponent implements OnInit {
       console.log(gradeta);
     }
     this.gradform = new FormGroup({
-      demandId: new FormControl(gradid, Validators.required),
+      id: new FormControl(gradid, Validators.required),
+      demandId: new FormControl(demandId,Validators.required),
       name: new FormControl(gradname, Validators.required),
       email: new FormControl(grademail, Validators.required),
       college: new FormControl(gradcollege, Validators.required),
@@ -98,6 +101,7 @@ export class GradEditComponent implements OnInit {
 
   onClear() {
     this.gradform.reset();
+    this.router.navigate(['/grads']);
   }
 
 
