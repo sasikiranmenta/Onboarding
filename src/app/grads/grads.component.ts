@@ -10,6 +10,7 @@ export class GradsComponent implements OnInit {
   constructor(private gradsService: GradsService) { }
 
   ngOnInit(): void {
+    this.gradsService.setGrads();
 
   }
 

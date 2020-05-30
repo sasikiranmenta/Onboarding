@@ -4,6 +4,7 @@ import { GradsService } from '../grads.service';
 import { GradDetails } from 'src/app/shared/grad.model';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { formatDate } from '@angular/common';
+import { DataStorageService } from 'src/app/shared/datastorage.service';
 
 @Component({
   selector: 'app-grad-edit',
@@ -16,13 +17,17 @@ export class GradEditComponent implements OnInit {
   grad: GradDetails;
   editmode = false;
   gradform: FormGroup;
+  grad1: GradDetails;
+
 
   constructor(private route: ActivatedRoute,
-              private router: Router,
-              private gradsService: GradsService,
-              ) { }
+    private router: Router,
+    private gradsService: GradsService,
+    private datastorage: DataStorageService
+  ) { }
 
   ngOnInit(): void {
+    this.gradsService.setGrads();
     this.route.params.subscribe((params: Params) => {
       this.id = +params['id'];
       this.editmode = params['id'] != null;
@@ -30,8 +35,9 @@ export class GradEditComponent implements OnInit {
     })
   }
 
+
   private initform() {
-    let gradid ;
+    let id;
     let demandId;
     let gradname = '';
     let grademail = '';
@@ -43,13 +49,15 @@ export class GradEditComponent implements OnInit {
     let gradlocation = '';
     let gradonboarstart;
     let gradeta;
-    let gradbgc ='';
-    let gradonboardingstatus='';
-
+    let gradbgc = '';
+    let gradonboardingstatus = '';
+    if (this.editmode) {
+      this.grad1 = this.gradsService.getGrad(this.id);
+    }
 
     if (this.editmode) {
       const grad = this.gradsService.getGrad(this.id);
-      gradid = grad.id;
+      id = grad.id;
       demandId = grad.demandId;
       gradname = grad.name;
       grademail = grad.email;
@@ -66,8 +74,7 @@ export class GradEditComponent implements OnInit {
       console.log(gradeta);
     }
     this.gradform = new FormGroup({
-      id: new FormControl(gradid, Validators.required),
-      demandId: new FormControl(demandId,Validators.required),
+      demandId: new FormControl(demandId, Validators.required),
       name: new FormControl(gradname, Validators.required),
       email: new FormControl(grademail, Validators.required),
       college: new FormControl(gradcollege, Validators.required),
@@ -80,9 +87,9 @@ export class GradEditComponent implements OnInit {
       eta: new FormControl(gradeta, Validators.required),
       bgvCheck: new FormControl(gradbgc, Validators.required),
       onboardingStatus: new FormControl(gradonboardingstatus, Validators.required)
-    
+
     }
-    
+
     );
 
 
@@ -91,8 +98,8 @@ export class GradEditComponent implements OnInit {
   }
   onSubmit() {
     if (this.editmode) {
-      this.gradsService.updateGrad(this.id, this.gradform.value);
-      console.log(this.gradform.value);
+      this.gradsService.updateGrad(this.grad1.id, this.gradform.value);
+      console.log(this.grad1.id);
     } else {
       this.gradsService.addGrad(this.gradform.value);
       console.log(this.gradform.value);

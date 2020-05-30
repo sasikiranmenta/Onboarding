@@ -1,7 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { HttpClientModule } from '@angular/common/http';
+import { SocialLoginModule, AuthServiceConfig } from 'angularx-social-login';
+import { GoogleLoginProvider } from 'angularx-social-login';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -21,6 +23,18 @@ import { HomeComponent } from './home/home.component';
 import { DemandComponent } from './demand/demand.component';
 import { TrendsComponent } from './trends/trends.component';
 import { DropdownDirective } from './shared/dropdown.directive';
+
+
+const google_oauth: string = "1054283611108-t9mdmtqqts7j214vkj6p97ll07n3a98c.apps.googleusercontent.com";
+let config = new AuthServiceConfig([
+  {
+    id: GoogleLoginProvider.PROVIDER_ID,
+    provider: new GoogleLoginProvider(google_oauth)
+  }
+])
+
+
+
 
 @NgModule({
   declarations: [
@@ -45,7 +59,9 @@ import { DropdownDirective } from './shared/dropdown.directive';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    SocialLoginModule.initialize(config)
   ],
   providers: [],
   bootstrap: [AppComponent]

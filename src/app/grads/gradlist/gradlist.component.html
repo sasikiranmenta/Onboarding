@@ -11,16 +11,15 @@
             </div>
         </form> -->
     <div class="col-xs-7">
-        <form>
+        
             <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search">
+                <input type="number" class="form-control" placeholder="Search" [(ngModel)]="idsearch">
                 <div class="input-group-btn">
-                    <button class="btn btn-default" type="submit">
+                    <button class="btn btn-default" type="submit" (click)="search()" >
                         <i class="glyphicon glyphicon-search"></i>
                     </button>
                 </div>
             </div>
-        </form>
     </div>
 </div>
 

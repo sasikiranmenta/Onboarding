@@ -1,6 +1,5 @@
 
-export class GradDetails {
-    id: number;
+export class GradPutDetails{
     demandId: number;
     name: string;
     email: string;
@@ -15,11 +14,10 @@ export class GradDetails {
     bgvCheck: string;
     onboardingStatus: string;
     skills: string
-    constructor(id: number, demandId: number, name: string, email: string, college: string, cgpa: number, personalNumber: number,
+    constructor(demandId: number, name: string, email: string, college: string, cgpa: number, personalNumber: number,
                 permanentAddress: string, presentAddress: string, location: string, onboardingStart: string, eta: string,
                 bgvCheck: string, onboardingStatus: string,skills: string ){
                     this.demandId = demandId;
-                    this.id = id;
                     this.name = name;
                     this.email = email;
                     this.college = college;

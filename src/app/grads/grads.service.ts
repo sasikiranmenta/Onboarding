@@ -1,6 +1,8 @@
 import { GradDetails } from '../shared/grad.model';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
+import { DataStorageService } from '../shared/datastorage.service';
+import { GradPutDetails } from '../shared/gradput.model';
 
 
 @Injectable({
@@ -10,14 +12,11 @@ export class GradsService {
 
     gradsChanged = new Subject<GradDetails[]>();
 
-    private grads: GradDetails[] = [
-        new GradDetails(1, 10, 'sasikiran', 'sasikiranmenta@gmail.com', 'ssn college', 8, 90101804449, 'mungamuri vari street', 'mungamuri vari street', 'banglore', '2020-05-15', '2020-05-15', 'verified', 'verified'),
+    constructor(private dataservice: DataStorageService) { }
 
-        new GradDetails(2, 10, 'sasikiran', 'sasikiranmenta@gmail.com', 'ssn college', 9, 90101804449, 'mungamuri vari street', 'mungamuri vari street', 'banglore', '2020-05-15' , '2020-05-15', 'pending', 'verified')
-    ];
+    private grads: GradDetails[] ;
 
     getGrads() {
-        console.log(this.grads[0].presentAddress);
         return this.grads.slice();
 
     }
@@ -27,21 +26,38 @@ export class GradsService {
 
     }
 
-    addGrad(grad: GradDetails){
-        this.grads.push(grad);
-        this.gradsChanged.next(this.grads.slice());
+    addGrad(grad: GradDetails) {
+        this.dataservice.storeGrads(grad).subscribe(()=>{
+            this.setGrads();
+        })
+
+        
+
+
+    }
+
+    updateGrad(index: number, grad: GradPutDetails) {
         console.log("hii");
+        this.dataservice.updateGrad(index,grad).subscribe((response) =>{
 
+            
+        });
+        this.setGrads();
     }
 
-    updateGrad(index: number, grad: GradDetails){
-        this.grads[index] = grad;
-        this.gradsChanged.next(this.grads.slice());
+    deletegrad(index: number) {
+        this.dataservice.deleteGrad(index).subscribe(()=>{
+        });
+        this.setGrads();
     }
 
-    deletegrad(index: number){
-        this.grads.splice(index, 1);
-        this.gradsChanged.next(this.grads.slice());
+    setGrads() {
+        this.dataservice.fetchGrads().subscribe( grads  => {
+                this.grads = grads;
+                this.gradsChanged.next(this.grads.slice());
+            }
+        );
+        
     }
 
 
