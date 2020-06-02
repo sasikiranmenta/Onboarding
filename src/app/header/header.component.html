@@ -5,14 +5,14 @@
         </div>
         <ul class= "nav navbar-nav">
             <li routerLink ="/home" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"><a style="cursor: pointer;">HOME</a></li>
-            <li routerLink ="/grads" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" ><a style="cursor: pointer;" >ONBOARDING</a></li>
-            <li routerLink ="/demand" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" ><a style="cursor: pointer;">DEMAND</a></li>
-            <li routerLink ="/trends" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"><a style="cursor: pointer;">TRENDS</a></li>
+            <li routerLink ="/grads" *ngIf="isAuthenticated" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" ><a style="cursor: pointer;" >ONBOARDING</a></li>
+            <li routerLink ="/demands" *ngIf="isAuthenticated" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" ><a style="cursor: pointer;">DEMAND</a></li>
+            <li routerLink ="/trends" *ngIf="isAuthenticated"  routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"><a style="cursor: pointer;">TRENDS</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-            <li routerLink ="/signup" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"><a style="cursor: pointer;"><span class="glyphicon glyphicon-user"></span>SIGN UP</a></li>
-            <li routerLink ="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" ><a style="cursor: pointer;"><span class="glyphicon glyphicon-log-in"></span>LOGIN</a></li>
-            <li routerLink ="/home" ><a style="cursor: pointer;"><span class="glyphicon glyphicon-log-out"></span>LOGOUT</a></li>
+            <li routerLink ="/signup" *ngIf="!isAuthenticated" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"><a style="cursor: pointer;"><span class="glyphicon glyphicon-user"></span>SIGN UP</a></li>
+            <li routerLink ="/" *ngIf="!isAuthenticated" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" ><a style="cursor: pointer;"><span class="glyphicon glyphicon-log-in"></span>LOGIN</a></li>
+            <li routerLink ="/home" *ngIf="isAuthenticated" ><a style="cursor: pointer;"(click)="signout()"><span class="glyphicon glyphicon-log-out"></span>LOGOUT</a></li>
 
         </ul>
 

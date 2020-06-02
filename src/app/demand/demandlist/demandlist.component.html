@@ -1,0 +1,24 @@
+<div class="row">
+    <div class="col-xs-5">
+        <button class="btn btn-success" (click)="onNew()">NEW DEMAND</button>
+    </div>
+    <!-- <div class="col-xs-7">
+        
+            <div class="input-group">
+                <input type="number" class="form-control" placeholder="Search" [(ngModel)]="idsearch">
+                <div class="input-group-btn">
+                    <button class="btn btn-default" type="submit" (click)="search()" >
+                        <i class="glyphicon glyphicon-search"></i>
+                    </button>
+                </div>
+            </div>
+    </div>
+</div> -->
+
+<hr>
+<div class="row">
+    <div class="col-xs-12">
+        <app-demanditem *ngFor = "let demand of demands; let i= index" [demand]=demand [index]=i ></app-demanditem>
+    </div>
+</div>
+

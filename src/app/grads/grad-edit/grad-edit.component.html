@@ -15,8 +15,8 @@
                 </div> -->
 
                 <div class="col-xs-12" class="form-group">
-                    <label for="Id">DEMAND ID</label>
-                    <input *ngIf="true" type="number" id="name" class="form-control" formControlName="demandId">
+                    <label for="demandId">DEMAND ID</label>
+                    <input *ngIf="true" type="number" id="demandId" class="form-control" formControlName="demandId">
                 </div>
 
 
@@ -61,49 +61,59 @@
                 <div class="col-xs-9">
                     <textarea type="text" id="permaddress" rows="5" class="form-control" formControlName="permanentAddress"></textarea>
                 </div>
-
+                
                 <div class="col-xs-2">
                     <label for="presaddress">PRESENT ADDRESS</label>
                 </div>
                 <div class="col-xs-9">
                     <textarea type="text" id="presaddress" rows="5" class="form-control" formControlName="presentAddress"></textarea>
                 </div>
-
+                
                 <div class="col-xs-2">
                     <label for="loaction">LOCATION</label>
                 </div>
                 <div class="col-xs-9">
-                    <input type="text" id="loaction" class="form-control" formControlName="location">
+                    <select  class="form-control" formControlName="location">
+                        <option>mumbai</option>
+                        <option>banglore</option>
+                      </select>
                 </div>
-
+                
                 <div class="col-xs-2">
                     <label for="onboarding">ONBOARDING DATE</label>
                 </div>
                 <div class="col-xs-9">
                     <input type="date" id="onboarding" class="form-control" formControlName="onboardingStart">
                 </div>
-
+                
                 <div class="col-xs-2">
                     <label for="eta">ETA FOR COMPLETION</label>
                 </div>
                 <div class="col-xs-9">
                     <input type="date" id="eta" class="form-control" formControlName="eta">
                 </div>
+
                 <div class="col-xs-2">
                     <label for="onboardingstatus">ONBOARDING STATUS</label>
                 </div>
                 <div class="col-xs-9">
-                    <input type="string" id="onboardingstatus" class="form-control" formControlName="onboardingStatus">
+                    <!-- <input type="string" id="onboardingstatus" class="form-control" formControlName="onboardingStatus"> -->
+                    <select  class="form-control" formControlName="onboardingStatus">
+                        <option>Verfied</option>
+                        <option>Pending</option>
+                      </select>
                 </div>
-
 
                 <div class="col-xs-2">
                     <label for="bgv">BACKGROUND VERIFICATION</label>
                 </div>
                 <div class="col-xs-9">
-                    <input type="string" id="bgc" class="form-control" formControlName="bgvCheck">
+                    <!-- <input type="string" id="bgc" class="form-control" formControlName="bgvCheck"> -->
+                    <select  class="form-control" formControlName="bgvCheck">
+                        <option>Completed</option>
+                        <option>Pending</option>
+                      </select>
                 </div>
-
             </div>
         </form>
     </div>

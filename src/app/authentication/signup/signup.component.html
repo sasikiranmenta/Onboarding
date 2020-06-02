@@ -1,1 +1,26 @@
-<p>signup works!</p>
+<div class="row">
+    <div class="col-xs-4"></div>
+    <img src="../../../assets/accolitePage.jpg" alt="ACCOLITE" width="700" height="150" >
+</div>
+
+<form  [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+<div id="login-box">
+    
+    <div class="left">
+      
+        <h1>Employee Details</h1>
+      <input type="hidden" name= "photourl" formControlName="photourl"  #photourl/>
+      <input type="text" name="email" placeholder="E-mail" formControlName="email" />
+      <input type="password" name="password" placeholder="Password" formControlName="pass" />
+      <input type="text" name="firstname" placeholder="Name" formControlName="name" />
+      <input type="submit" name="signup_submit" value="Log in" />
+       
+    </div>
+    
+    <div class="right">
+      <span class="loginwith">Sign in withsocial network</span>
+      <img [src]="photourl.value" alt="user image"/>
+    </div>
+    
+  </div>
+</form>

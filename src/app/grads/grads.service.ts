@@ -26,10 +26,10 @@ export class GradsService {
 
     }
 
-    addGrad(grad: GradDetails) {
+    addGrad(grad: GradPutDetails) {
         this.dataservice.storeGrads(grad).subscribe(()=>{
             this.setGrads();
-        })
+        },() =>{this.setGrads();});
 
         
 
@@ -37,11 +37,8 @@ export class GradsService {
     }
 
     updateGrad(index: number, grad: GradPutDetails) {
-        console.log("hii");
-        this.dataservice.updateGrad(index,grad).subscribe((response) =>{
-
-            
-        });
+        console.log(grad);
+        this.dataservice.updateGrad(index,grad).subscribe();
         this.setGrads();
     }
 

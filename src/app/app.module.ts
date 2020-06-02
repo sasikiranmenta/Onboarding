@@ -23,6 +23,13 @@ import { HomeComponent } from './home/home.component';
 import { DemandComponent } from './demand/demand.component';
 import { TrendsComponent } from './trends/trends.component';
 import { DropdownDirective } from './shared/dropdown.directive';
+import { DemandDetailComponent } from './demand/demand-detail/demand-detail.component';
+import { DemandEditComponent } from './demand/demand-edit/demand-edit.component';
+import { DemandlistComponent } from './demand/demandlist/demandlist.component';
+import { DemanditemComponent } from './demand/demandlist/demanditem/demanditem.component';
+import { DemandemptyComponent } from './demand/demandempty/demandempty.component';
+import { PiechartComponent } from './trends/piechart/piechart.component';
+import { BarchartComponent } from './trends/barchart/barchart.component';
 
 
 const google_oauth: string = "1054283611108-t9mdmtqqts7j214vkj6p97ll07n3a98c.apps.googleusercontent.com";
@@ -53,7 +60,14 @@ let config = new AuthServiceConfig([
     HomeComponent,
     DemandComponent,
     TrendsComponent,
-    DropdownDirective
+    DropdownDirective,
+    DemandDetailComponent,
+    DemandEditComponent,
+    DemandlistComponent,
+    DemanditemComponent,
+    DemandemptyComponent,
+    PiechartComponent,
+    BarchartComponent
   ],
   imports: [
     BrowserModule,

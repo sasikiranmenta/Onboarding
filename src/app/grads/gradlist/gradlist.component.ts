@@ -32,7 +32,7 @@ export class GradlistComponent implements OnInit, OnDestroy {
           this.grads = grads;
         }
       );
-    this.grads = this.gradsService.getGrads();
+    //this.grads = this.gradsService.getGrads();
   }
 
   onNew() {

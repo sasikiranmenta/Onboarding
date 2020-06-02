@@ -99,11 +99,11 @@ export class GradEditComponent implements OnInit {
   onSubmit() {
     if (this.editmode) {
       this.gradsService.updateGrad(this.grad1.id, this.gradform.value);
-      console.log(this.grad1.id);
+      
     } else {
       this.gradsService.addGrad(this.gradform.value);
-      console.log(this.gradform.value);
     }
+    this.router.navigate(['/grads']);
   }
 
   onClear() {

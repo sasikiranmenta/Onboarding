@@ -30,6 +30,8 @@ export class GradDetailComponent implements OnInit {
         });
     console.log(this.grad.permanentAddress);
   }
+
+  
   onDelete() {
     this.gradsService.deletegrad(this.grad.id);
     this.router.navigate(['/grads']);

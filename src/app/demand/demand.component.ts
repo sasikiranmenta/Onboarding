@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DemandService } from './demand.service';
 
 @Component({
   selector: 'app-demand',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DemandComponent implements OnInit {
 
-  constructor() { }
+  constructor(private demandservice: DemandService) { }
 
   ngOnInit(): void {
+    this.demandservice.setDemands();
   }
 
 }
