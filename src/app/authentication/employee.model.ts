@@ -1,4 +1,5 @@
 export class Employee{
+   public id:string
     name: string;
     pass: string;
     email: string;

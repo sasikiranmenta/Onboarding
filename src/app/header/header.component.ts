@@ -9,26 +9,32 @@ import { AuthenticationService } from '../authentication/auth.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit,OnDestroy {
+export class HeaderComponent implements OnInit, OnDestroy {
 
   isAuthenticated = false;
   private usersub: Subscription;
-  //public loggedInStatus = JSON.parse(localStorage.getItem('userdata') || 'false');
+  private adminsub: Subscription;
+  admin = false;   // public loggedInStatus = JSON.parse(localStorage.getItem('userdata') || 'false');
   constructor(private router: Router, private authenticationservice: AuthenticationService) { }
   ngOnDestroy(): void {
     this.usersub.unsubscribe();
+    this.adminsub.unsubscribe();
   }
 
   ngOnInit(): void {
     this.usersub = this.authenticationservice.user.subscribe(user => {
       this.isAuthenticated = !!user;
+      this.adminsub = this.authenticationservice.admin.subscribe(admin =>{
+        this.admin = admin;
+      });
+
     })
 
 
   }
   signout() {
-  this.authenticationservice.logout();  
+    this.authenticationservice.logout();
   }
 
-  
+
 }

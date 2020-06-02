@@ -46,13 +46,12 @@
       
         <h1>Log in</h1>
       
-      <input type="text" name="email" placeholder="E-mail" />
-      <input type="password" name="password" placeholder="Password" />
+      <input type="text" name="email" placeholder="E-mail" [(ngModel)]=email  required />
+      <input type="password" name="password" placeholder="Password" [(ngModel)]=pass required/>
       
       
-      <input type="submit" name="signup_submit" value="Log in" />
+      <button class="btn btn-primary" name="signup_submit" (click)="onSubmit()" >Log in</button>
     </div>
-    
     <div class="right">
       <span class="loginwith">Sign in withsocial network</span>
       <button class="social-signin google"  (click) = "login('Google')">Log in with Google+</button>

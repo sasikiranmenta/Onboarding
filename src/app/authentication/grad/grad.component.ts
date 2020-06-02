@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { AuthenticationService } from '../auth.service';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { User } from '../user.model';
+import { FormGroup } from '@angular/forms';
+import { Employee } from '../employee.model';
 
 
 @Component({
@@ -13,25 +15,31 @@ import { User } from '../user.model';
 })
 export class GradComponent implements OnInit {
  
+    email = '';
+    pass = '';
   //user = new BehaviorSubject<User>(null);
  
  
   ngOnInit() {
+
+    this.authenticationservice.getEmployees();
   }
 
 
   constructor(private socialAuthServ: AuthService, private router: Router, private authenticationservice: AuthenticationService) { }
 
   login(platform: string) {
-    this.authenticationservice.login(platform);
-    // platform = GoogleLoginProvider.PROVIDER_ID;
-    // this.socialAuthServ.signIn(platform).then(response => {
-    //   const user = new User(response.email, response.firstName, response.photoUrl);
-    //   this.user.next(user);
-    //   console.log(user);
-    //   localStorage.setItem('userdata', JSON.stringify(user));
-    //   this.router.navigate(['home']);
+    this.authenticationservice.login(platform); 
+  }
+ 
+  private initform(){
+    
+  }
+ 
 
-  
+  onSubmit(){
+    this.authenticationservice.log(this.email,this.pass);
+
+
   }
 }

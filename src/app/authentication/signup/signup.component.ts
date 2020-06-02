@@ -13,7 +13,7 @@ export class SignupComponent implements OnInit {
   signupUser: User;
   employeeForm: FormGroup;
   constructor(private route: ActivatedRoute, private router: Router, private authenticationService: AuthenticationService) { }
-
+  fromlogin =false;
   ngOnInit(): void {
     this.initForm();
     
@@ -23,12 +23,12 @@ let name ='';
 let pass = '';
 let email = '';
 let photourl = '';
-
+if(this.fromlogin){
 const signupUser = this.authenticationService.getSignupUser();
 name = signupUser.firstname;
 email = signupUser.email;
 photourl = signupUser.photourl;
-
+}
 this.employeeForm = new FormGroup({
   name: new FormControl(name, Validators.required),
   pass: new FormControl(pass, Validators.required),
