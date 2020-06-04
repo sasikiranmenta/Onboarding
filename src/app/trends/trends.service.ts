@@ -10,6 +10,7 @@ export class Trendservice {
 
     myMap = new Map();
     myMaploc = new Map();
+    mymaphm = new Map();
 
     constructor(private demandsservice: DemandService) {
 
@@ -48,6 +49,18 @@ export class Trendservice {
         return this.myMap;
     }
     
+    getHm(){
+        this.mymaphm.clear();
+        for(let demand of this.demands){
+            if(this.mymaphm.has(demand.empid)){
+                this.mymaphm.set(demand.empid, this.mymaphm.get(demand.empid)+ +(demand.count));
+            }
+            else{
+                this.mymaphm.set(demand.empid,+(demand.count));
+            }
+        }
+          return this.mymaphm;
+    }
 
 
 

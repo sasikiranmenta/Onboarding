@@ -21,8 +21,11 @@ export class DemandService {
 
     deleteDemand(index: number) {
         this.dataservice.deleteDemand(index).subscribe(() => {
+            this.setDemands();
+        },()=>{
+            this.setDemands();
         });
-        this.setDemands();
+       
 
     }
     getDemands() {
@@ -31,16 +34,22 @@ export class DemandService {
 
     addDemand(demand: DemandDetails) {
         this.dataservice.storeDemands(demand).subscribe(() => {
-
+            this.setDemands();
+        },()=>{
+            this.setDemands();
         });
-        this.setDemands();
+        
 
     }
 
     updateDemand(index: number, demand: DemandputDetails) {
         console
-        this.dataservice.updateDemand(index, demand).subscribe();
-        this.setDemands();
+        this.dataservice.updateDemand(index, demand).subscribe(()=>{
+            this.setDemands();
+        },()=>{
+            this.setDemands();
+        });
+        
     }
 
     setDemands() {

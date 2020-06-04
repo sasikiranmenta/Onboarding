@@ -2,10 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService, GoogleLoginProvider } from 'angularx-social-login';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../auth.service';
+import { formatDate } from '@angular/common';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { User } from '../user.model';
 import { FormGroup } from '@angular/forms';
 import { Employee } from '../employee.model';
+import { LogService } from 'src/app/shared/log.service';
 
 
 @Component({
@@ -14,11 +16,13 @@ import { Employee } from '../employee.model';
   styleUrls: ['./grad.component.css']
 })
 export class GradComponent implements OnInit {
+  
+  currentdate = new Date();
+  date = formatDate(this.currentdate, 'yyyy-MM-dd', 'en');
  
     email = '';
     pass = '';
   //user = new BehaviorSubject<User>(null);
- 
  
   ngOnInit() {
 
@@ -26,20 +30,17 @@ export class GradComponent implements OnInit {
   }
 
 
-  constructor(private socialAuthServ: AuthService, private router: Router, private authenticationservice: AuthenticationService) { }
+  constructor(private socialAuthServ: AuthService, private router: Router, private authenticationservice: AuthenticationService,private logService: LogService) { }
 
   login(platform: string) {
     this.authenticationservice.login(platform); 
   }
  
   private initform(){
-    
   }
  
 
   onSubmit(){
     this.authenticationservice.log(this.email,this.pass);
-
-
   }
 }

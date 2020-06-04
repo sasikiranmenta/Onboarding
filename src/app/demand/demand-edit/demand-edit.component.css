@@ -1,0 +1,23 @@
+
+input.ng-invalid.ng-touched,
+textarea.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+
+.backdrop{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100w;
+    height: 100vw;
+    background: rgba(255, 255, 255, 0.938);
+    z-index: 50;
+}
+
+.form-control{
+   padding: 5px;
+}
+
+option:empty{
+display: none;
+}

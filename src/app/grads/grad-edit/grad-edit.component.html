@@ -1,19 +1,14 @@
-<div class="row">
+<!-- <div class="row">
     <div class="col-xs-12">
-        <form [formGroup]="gradform" (ngSubmit) = "onSubmit()">
+        <form [formGroup]="gradform" (ngSubmit)="onSubmit()">
             <div class="row">
                 <div class="col-xs-12">
-                    <button type="submit" class="btn btn-success" [disabled]="!gradform.valid" >SAVE</button>
-                    <button type="button" class=" btn btn-danger" (click) = "onClear()" >CANCEL</button>
+                    <button type="submit" class="btn btn-success" [disabled]="!gradform.valid">SAVE</button>
+                    <button type="button" class=" btn btn-danger" (click)="onClear()">CANCEL</button>
                 </div>
             </div>
             <div class="row">
-                <!-- <div class="col-xs-12" class="form-group">
-                    <label for="id">ID</label>
-                    <p *ngIf="!editmode" id="id" class="form-control">grad Id</p>
-                    <input  type="number" id="id" class="form-control" formControlName="id">
-                </div> -->
-
+                
                 <div class="col-xs-12" class="form-group">
                     <label for="demandId">DEMAND ID</label>
                     <input *ngIf="true" type="number" id="demandId" class="form-control" formControlName="demandId">
@@ -24,7 +19,7 @@
                     <label for="name">NAME</label>
                 </div>
                 <div class="col-xs-9">
-                    <input type="text" id="name" class="form-control" formControlName="name" >
+                    <input type="text" id="name" class="form-control" formControlName="name">
                 </div>
 
                 <div class="col-xs-2">
@@ -59,33 +54,35 @@
                     <label for="permaddress">PERMANENT ADDRESS</label>
                 </div>
                 <div class="col-xs-9">
-                    <textarea type="text" id="permaddress" rows="5" class="form-control" formControlName="permanentAddress"></textarea>
+                    <textarea type="text" id="permaddress" rows="5" class="form-control"
+                        formControlName="permanentAddress"></textarea>
                 </div>
-                
+
                 <div class="col-xs-2">
                     <label for="presaddress">PRESENT ADDRESS</label>
                 </div>
                 <div class="col-xs-9">
-                    <textarea type="text" id="presaddress" rows="5" class="form-control" formControlName="presentAddress"></textarea>
+                    <textarea type="text" id="presaddress" rows="5" class="form-control"
+                        formControlName="presentAddress"></textarea>
                 </div>
-                
+
                 <div class="col-xs-2">
                     <label for="loaction">LOCATION</label>
                 </div>
                 <div class="col-xs-9">
-                    <select  class="form-control" formControlName="location">
+                    <select class="form-control" formControlName="location">
                         <option>mumbai</option>
                         <option>banglore</option>
-                      </select>
+                    </select>
                 </div>
-                
+
                 <div class="col-xs-2">
                     <label for="onboarding">ONBOARDING DATE</label>
                 </div>
                 <div class="col-xs-9">
                     <input type="date" id="onboarding" class="form-control" formControlName="onboardingStart">
                 </div>
-                
+
                 <div class="col-xs-2">
                     <label for="eta">ETA FOR COMPLETION</label>
                 </div>
@@ -97,24 +94,190 @@
                     <label for="onboardingstatus">ONBOARDING STATUS</label>
                 </div>
                 <div class="col-xs-9">
-                    <!-- <input type="string" id="onboardingstatus" class="form-control" formControlName="onboardingStatus"> -->
-                    <select  class="form-control" formControlName="onboardingStatus">
+                    
+                    <select class="form-control" formControlName="onboardingStatus">
                         <option>Verfied</option>
                         <option>Pending</option>
-                      </select>
+                    </select>
                 </div>
 
                 <div class="col-xs-2">
                     <label for="bgv">BACKGROUND VERIFICATION</label>
                 </div>
                 <div class="col-xs-9">
-                    <!-- <input type="string" id="bgc" class="form-control" formControlName="bgvCheck"> -->
-                    <select  class="form-control" formControlName="bgvCheck">
+                   
+                    <select class="form-control" formControlName="bgvCheck">
                         <option>Completed</option>
                         <option>Pending</option>
-                      </select>
+                    </select>
                 </div>
             </div>
         </form>
     </div>
+</div> -->
+
+
+
+
+<div class="backdrop">
+    <div class="alert">
+    <form [formGroup]="gradform" (ngSubmit)="onSubmit()">
+
+        <div class="row ">
+            <div class="col-sm-12">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <button type="submit" class="btn btn-success">SAVE</button> 
+                        <div class="col-xs-6">
+                            <button type="button" class=" btn btn-danger" (click)="onClear()">CANCEL</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+<br>
+                <div class="col-sm-12">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <label class="firstname" for="name">Name :</label></div>
+                        <div class="col-xs-8">
+                            <input type="text" name="name" id="name" placeholder="Enter the Name" class="form-control"
+                                formControlName="name">
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="col-sm-12">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <label class="firstname" for="email">Email :</label></div>
+                        <div class="col-xs-8">
+                            <input type="email" name="email" id="email" placeholder="Enter the email"
+                                class="form-control" formControlName="email">
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="col-sm-12">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <label class="firstname" for="college">Skill :</label></div>
+                        <div class="col-xs-8">
+                            <input type="text" name="college" id="college" placeholder="Enter the Skill"
+                                class="form-control" formControlName="college"  [(ngModel)]="skill">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <label class="firstname" for="name">Experience :</label></div>
+                        <div class="col-xs-8">
+                            <input type="number" name="cgpa" id="cgpa" placeholder="Enter the Experience" class="form-control"
+                                formControlName="cgpa">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <label class="firstname" for="contact">Contact Number :</label></div>
+                        <div class="col-xs-8">
+                            <input type="number" name="contact" id="contact" placeholder="Enter the Contact Number"
+                                class="form-control" formControlName="personalNumber">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-12">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <label class="firstname" for="name">Permanent Address :</label></div>
+                        <div class="col-xs-8">
+                            <textarea type="text" name="permaddress" id="permaddress"
+                                placeholder="Enter the Permanent Address" class="form-control"
+                                formControlName="permanentAddress"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-sm-12">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <label class="firstname" for="name">Location :</label></div>
+                        <div class="col-xs-8">
+                            <select class="form-control" formControlName="location">
+                                <option>MUMBAI</option>
+                                <option>BANGLORE</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-sm-12">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <label class="firstname" for="onboarding">Onboarding :</label></div>
+                        <div class="col-xs-8">
+                            <input type="date" name="onboarding" id="onboardingstatus" class="form-control"
+                                formControlName="onboardingStart">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-12">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <label class="firstname" for="eta">Onboarding :</label></div>
+                        <div class="col-xs-8">
+                            <input type="date" name="eta" id="eta" class="form-control" formControlName="eta">
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-sm-12">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <label class="firstname" for="onboardingstatus">OnBoarding Status :</label></div>
+                        <div class="col-xs-8">
+                            <select class="form-control" formControlName="onboardingStatus">
+                                <option>Verfied</option>
+                                <option>Pending</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-12">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <label class="firstname" for="bgv">Background Verification :</label></div>
+                        <div class="col-xs-8">
+                            <select class="form-control" formControlName="bgvCheck">
+                                <option>Completed</option>
+                                <option>Pending</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-12">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <label class="firstname" for="bgv">Demand :</label></div>
+                        <div class="col-xs-8">
+                            <select class="form-control" formControlName="demandId">
+                                <option *ngFor="let demand of demands" [value]="demand.demandid"><span *ngIf="this.skill === demand.skills">Skill-{{ demand.skills }}&nbsp;Location-{{ demand.location }}</span></option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+
+
+    </form>
+</div>
 </div>

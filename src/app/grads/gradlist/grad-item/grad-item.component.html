@@ -1,7 +1,10 @@
-<div class="row">
+<!-- <div class="row">
     <div class="col-xs-8">
         <a style = "cursor: pointer;" class = "list-group-item clearfix" [routerLink]= "[index]"  routerLinkActive= "active" [routerLinkActiveOptions] = "{exact: true}">
-            <div class="pull-left">
+            <div>
+                <table>
+                    <the
+                </table>
                 <h4 class = "list-group-item-heading">{{ grad.id}}</h4>
                 <p lcass = "list-group-item-text">{{ grad.name }}</p>
             </div>
@@ -12,3 +15,40 @@
         </a>
     </div>
 </div>
+
+<div class="container">            
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Contact</th>
+          <th>Address</th>
+          <th>Location</th>
+          <th>Skill</th>
+          <th>Experience</th>
+          <th>onBoarding</th>
+          <th>ETA</th>
+          <th>Onboarding Status</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ grad.id }}</td>
+          <td>{{ grad.name }}</td>
+          <td>{{ grad.email }}</td>
+          <td>{{ grad.personalNumber }}</td>
+          <td>{{ grad.permanentAddress }}</td>
+          <td>{{ grad.location }}</td>
+          <td>{{ grad.college }}</td>
+          <td>{{ grad.cgpa }}</td>
+          <td>{{ grad.onboardingStart }}</td>
+          <td>{{ grad.eta }}</td>
+          <td>{{ grad.onboardingStatus }}</td>
+          <td>{{ grad.bgvCheck }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div> -->

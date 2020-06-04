@@ -87,6 +87,8 @@ export class AuthenticationService {
         this.user.next(null);
         this.router.navigate(['/']);
         localStorage.removeItem('userdata');
+        this.administrator = false;
+        this.admin.next();
     }
 
 

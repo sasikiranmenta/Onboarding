@@ -27,7 +27,6 @@ myMaploc = new Map();
         ]
       }]
     });
-
     chart.render();
   }
 

@@ -7,6 +7,7 @@ import { GradPutDetails } from './gradput.model';
 import { DemandDetails } from './demand.model';
 import { DemandputDetails } from './demandput.model';
 import { Employee } from '../authentication/employee.model';
+import { Log } from './log.model';
 
 
 @Injectable({ providedIn: 'root' })
@@ -69,13 +70,20 @@ export class DataStorageService {
         return this.http.post(
             'http://localhost:8080/bookapi/api/employee', employee
         );
-        
-        // console.log(employee);
 
     }
 
     getEmployees(){
         return this.http.get<Employee[]>('http://localhost:8080/bookapi/api/employee');
+    }
+
+    addLog(log: Log){
+console.log(log.userid);
+        return this.http.post('http://localhost:8080/bookapi/api/logging', log);
+    }
+
+    getLog(){
+        return this.http.get<Log[]>('http://localhost:8080/bookapi/api/logging');
     }
 
 

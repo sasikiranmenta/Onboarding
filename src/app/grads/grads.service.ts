@@ -38,14 +38,21 @@ export class GradsService {
 
     updateGrad(index: number, grad: GradPutDetails) {
         console.log(grad);
-        this.dataservice.updateGrad(index,grad).subscribe();
-        this.setGrads();
+        this.dataservice.updateGrad(index,grad).subscribe(()=>{
+            this.setGrads();
+        },()=>{
+            this.setGrads();
+        });
+        
     }
 
     deletegrad(index: number) {
         this.dataservice.deleteGrad(index).subscribe(()=>{
+            this.setGrads();
+        },()=>{
+            this.setGrads();
         });
-        this.setGrads();
+    
     }
 
     setGrads() {

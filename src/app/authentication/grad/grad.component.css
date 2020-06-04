@@ -61,7 +61,10 @@ input[type="password"]:focus {
   color: #16a085;
   transition: 0.2s ease;
 }
-
+input.ng-invalid.ng-touched,
+textarea.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
 input[type="submit"] {
   margin-top: 28px;
   width: 120px;

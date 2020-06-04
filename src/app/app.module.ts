@@ -4,7 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { SocialLoginModule, AuthServiceConfig } from 'angularx-social-login';
 import { GoogleLoginProvider } from 'angularx-social-login';
-
+import { ChartsModule } from 'ng2-charts'; 
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -30,6 +30,7 @@ import { DemanditemComponent } from './demand/demandlist/demanditem/demanditem.c
 import { DemandemptyComponent } from './demand/demandempty/demandempty.component';
 import { PiechartComponent } from './trends/piechart/piechart.component';
 import { BarchartComponent } from './trends/barchart/barchart.component';
+import { HiringmanagerComponent } from './trends/hiringmanager/hiringmanager.component';
 
 
 const google_oauth: string = "1054283611108-t9mdmtqqts7j214vkj6p97ll07n3a98c.apps.googleusercontent.com";
@@ -67,7 +68,8 @@ let config = new AuthServiceConfig([
     DemanditemComponent,
     DemandemptyComponent,
     PiechartComponent,
-    BarchartComponent
+    BarchartComponent,
+    HiringmanagerComponent
   ],
   imports: [
     BrowserModule,
@@ -75,7 +77,8 @@ let config = new AuthServiceConfig([
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    SocialLoginModule.initialize(config)
+    SocialLoginModule.initialize(config),
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

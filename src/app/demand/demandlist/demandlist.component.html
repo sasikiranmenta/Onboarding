@@ -1,24 +1,48 @@
-<div class="row">
+<div class="row" *ngIf="!admin" >
     <div class="col-xs-5">
-        <button class="btn btn-success" (click)="onNew()">NEW DEMAND</button>
+        <button class="btn btn-success" (click)="onNew()" >NEW DEMAND</button>
     </div>
-    <!-- <div class="col-xs-7">
-        
-            <div class="input-group">
-                <input type="number" class="form-control" placeholder="Search" [(ngModel)]="idsearch">
-                <div class="input-group-btn">
-                    <button class="btn btn-default" type="submit" (click)="search()" >
-                        <i class="glyphicon glyphicon-search"></i>
-                    </button>
-                </div>
-            </div>
-    </div>
-</div> -->
-
+</div>
 <hr>
+<!-- 
 <div class="row">
     <div class="col-xs-12">
         <app-demanditem *ngFor = "let demand of demands; let i= index" [demand]=demand [index]=i ></app-demanditem>
     </div>
+</div> -->
+
+<div class="container">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Employee Id</th>
+                <th>Location</th>
+                <th>Skill</th>
+                <th>Start Date</th>
+                <th>Count</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let demand of demands; let i= index">
+                <td>{{ demand.demandid }}</td>
+                <td>{{ demand.empid }}</td>
+                <td>{{ demand.location }}</td>
+                <td>{{ demand.skills }}</td>
+                <td>{{ demand.start }}</td>
+                <td>{{ demand.count }}</td>
+                <td>{{ demand.status }}</td>
+                <td *ngIf="!admin">
+                    <a style="cursor: pointer;"[routerLink]= i ><span class="glyphicon glyphicon-edit"></span>
+                    </a>
+                    <a style="cursor: pointer;" (click)="onDelete(demand)">
+                        <span class="glyphicon glyphicon-trash">
+                        </span>
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </div>
 
