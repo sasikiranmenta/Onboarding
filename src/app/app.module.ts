@@ -33,6 +33,7 @@ import { BarchartComponent } from './trends/barchart/barchart.component';
 import { HiringmanagerComponent } from './trends/hiringmanager/hiringmanager.component';
 
 
+
 const google_oauth: string = "1054283611108-t9mdmtqqts7j214vkj6p97ll07n3a98c.apps.googleusercontent.com";
 let config = new AuthServiceConfig([
   {
@@ -78,7 +79,7 @@ let config = new AuthServiceConfig([
     ReactiveFormsModule,
     HttpClientModule,
     SocialLoginModule.initialize(config),
-    ChartsModule
+    ChartsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

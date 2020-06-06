@@ -7,11 +7,13 @@ textarea.ng-invalid.ng-touched {
     position: fixed;
     top: 0;
     left: 0;
-    width: 80w;
-    height: 80vw;
+    width: 100vw;
+    height: 100vw;
     background: rgba(255, 255, 255, 0.938);
     z-index: 50;
 }
+
+
 
 .firstname{
     
