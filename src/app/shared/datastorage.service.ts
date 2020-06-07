@@ -58,7 +58,10 @@ export class DataStorageService {
             "http://localhost:8080/bookapi/api/demand/" + id, demand
         );
     }
-
+    
+    getDemand(id: number){
+        return this.http.get<DemandDetails>("http://localhost:8080/bookapi/api/demand/" + id);
+    }
 
     storeDemands(demand: DemandDetails) {
         return this.http.post(
@@ -75,6 +78,10 @@ export class DataStorageService {
 
     getEmployees(){
         return this.http.get<Employee[]>('http://localhost:8080/bookapi/api/employee');
+    }
+
+    getEmployee(id: number){
+        return this.http.get<Employee>("http://localhost:8080/bookapi/api/employee/"+id);
     }
 
     addLog(log: Log){

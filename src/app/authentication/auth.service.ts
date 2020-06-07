@@ -62,7 +62,7 @@ export class AuthenticationService {
                 break;
             }
         }
-        if (bool === false){
+        if (bool === false) {
             alert('Enter Valid Credentials');
         }
     }
@@ -95,9 +95,9 @@ export class AuthenticationService {
     addEmployee(emp: any) {
         console.log(emp);
         const employee = new Employee(emp.value.name, emp.value.pass, emp.value.email, emp.value.photourl);
-        this.dataservice.addEmployee(employee).subscribe(()=>{
+        this.dataservice.addEmployee(employee).subscribe(() => {
             this.router.navigate(['/']);
-        },()=>{this.router.navigate(['/']);});
+        }, () => { this.router.navigate(['/']); });
     }
 
 
@@ -107,8 +107,13 @@ export class AuthenticationService {
             //this.id = employee.id;
         });
 
-
     }
+
+      getEmployee(id: number){
+      
+        // this.dataservice.getEmployee(id).subscribe((employee)=>{
+        }
+    
 
 
 

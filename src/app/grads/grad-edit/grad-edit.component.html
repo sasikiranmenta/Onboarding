@@ -270,7 +270,7 @@
                             <label class="firstname" for="bgv">Demand :</label></div>
                         <div class="col-xs-8">
                             <select class="form-control" formControlName="demandId">
-                                <option *ngFor="let demand of demands" [value]="demand.demandid"><span *ngIf="this.skill === demand.skills">Skill-{{ demand.skills }}&nbsp;Location-{{ demand.location }}</span></option>
+                                <option *ngFor="let demand of demands" [value]="demand.demandid"><span *ngIf="demand.status !== 'satisfied' && this.skill === demand.skills   ">Skill-{{ demand.skills }}&nbsp;Location-{{ demand.location }}</span></option>
                             </select>
                         </div>
                     </div>

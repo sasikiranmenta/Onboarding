@@ -60,6 +60,7 @@ export class DemandEditComponent implements OnInit, OnDestroy {
     let location = '';
     let start = '';
     let status = '';
+    let scount;
     if (this.editmode) {
       this.demand1 = this.demandservice.getDemand(this.id);
     }
@@ -71,6 +72,7 @@ export class DemandEditComponent implements OnInit, OnDestroy {
       location = demand.location;
       start = formatDate(demand.start, 'yyyy-MM-dd', 'en');
       status = demand.status;
+      scount = demand.scount;
     }
 
     this.demandform = new FormGroup({
@@ -79,7 +81,9 @@ export class DemandEditComponent implements OnInit, OnDestroy {
       location: new FormControl(location, Validators.required),
       start: new FormControl(start, Validators.required),
       status: new FormControl(status, Validators.required),
-      empid: new FormControl(this.user.id, Validators.required)
+      empid: new FormControl(this.user.id, Validators.required),
+      empName: new FormControl(this.user.firstname),
+      scount: new FormControl(scount)
     });
   }
 

@@ -4,14 +4,12 @@
             <tr>
                 <th>Date</th>
                 <th>Description</th>
-                <th>Performed By</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let log of logs; let i= index ">
-                <td >{{ log.date }}</td>
-                <td >{{ log.message }}</td>
-                <td >{{ log.userid }}</td>
+                <td  *ngIf="this.user.id === log.userid" >{{ log.date }}</td>
+                <td  *ngIf="this.user.id === log.userid">{{ log.message }}</td>
             </tr>
         </tbody>
     </table>

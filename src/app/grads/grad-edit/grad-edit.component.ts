@@ -30,6 +30,7 @@ export class GradEditComponent implements OnInit, OnDestroy {
   userSub: Subscription;
   subscription: Subscription;
   skill='';
+  
 
   demands: DemandDetails[];
   constructor(private route: ActivatedRoute,
@@ -113,7 +114,7 @@ export class GradEditComponent implements OnInit, OnDestroy {
       onboardingStart: new FormControl(gradonboarstart, Validators.required),
       eta: new FormControl(gradeta, Validators.required),
       bgvCheck: new FormControl(gradbgc, Validators.required),
-      onboardingStatus: new FormControl(gradonboardingstatus, Validators.required)
+      onboardingStatus: new FormControl(gradonboardingstatus, Validators.required),
 
     }
 
@@ -137,6 +138,7 @@ export class GradEditComponent implements OnInit, OnDestroy {
   }
 
   onClear() {
+    
     this.gradform.reset();
     this.router.navigate(['/grads']);
   }

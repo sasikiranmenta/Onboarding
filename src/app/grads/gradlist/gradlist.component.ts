@@ -8,6 +8,7 @@ import { LogService } from 'src/app/shared/log.service';
 import { formatDate } from '@angular/common';
 import { AuthenticationService } from 'src/app/authentication/auth.service';
 import { User } from 'src/app/authentication/user.model';
+import { DataStorageService } from 'src/app/shared/datastorage.service';
 @Component({
   selector: 'app-gradlist',
   templateUrl: './gradlist.component.html',
@@ -19,7 +20,8 @@ export class GradlistComponent implements OnInit, OnDestroy {
               private route: ActivatedRoute,
               private gradsService: GradsService,
               private authService: AuthenticationService,
-              private logService: LogService) { }
+              private logService: LogService,
+              private dataService: DataStorageService) { }
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
     this.userSub.unsubscribe();
@@ -33,6 +35,7 @@ export class GradlistComponent implements OnInit, OnDestroy {
   date = formatDate(this.currentdate, 'yyyy-MM-dd', 'en');
   user: User;
   userSub: Subscription;
+  
 
 
   ngOnInit(): void {
@@ -46,6 +49,7 @@ this.user = user;
         }
       );
     //this.grads = this.gradsService.getGrads();
+
   }
 
   onNew() {

@@ -28,6 +28,7 @@ export class DemandlistComponent implements OnInit, OnDestroy {
   user: User;
   userSub: Subscription;
   adminsub: Subscription;
+  employeeSub: Subscription;
   admin = false;
   date = formatDate(this.currentdate, 'yyyy-MM-dd', 'en');
   ngOnInit(): void {
@@ -43,6 +44,9 @@ export class DemandlistComponent implements OnInit, OnDestroy {
         (demands: DemandDetails[]) => {
           this.demands = demands;
         });
+
+
+
      this.admin = this.authService.administrator;
     this.adminsub = this.authService.admin.subscribe(admin => {
       console.log(this.admin);

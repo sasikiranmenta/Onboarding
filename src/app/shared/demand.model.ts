@@ -4,9 +4,11 @@ export class DemandDetails {
     start: string;
     status: string;
     location: string;
-    count: number;
+   public count: number;
     empid: number;
-    constructor(demandid: number, skills: string, start: string, status: string, location: string, count: number, empid: number) {
+    empName: string;
+   public scount: number;
+    constructor(demandid: number, skills: string, start: string, status: string, location: string, count: number, empid: number,empName: string,scount: number) {
         this.demandid = demandid;
         this.skills = skills;
         this.start = start;
@@ -14,6 +16,8 @@ export class DemandDetails {
         this.location = location;
         this.count = count;
         this.empid = empid;
+        this.empName = empName;
+        this.scount = scount;
     }
 
 
