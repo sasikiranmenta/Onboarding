@@ -1,6 +1,6 @@
 import { Component, OnInit, OnChanges, OnDestroy } from '@angular/core';
 import { Log } from 'src/app/shared/log.model';
-import { LogService } from 'src/app/shared/log.service';
+
 import { DataStorageService } from 'src/app/shared/datastorage.service';
 import { AuthenticationService } from '../auth.service';
 import { User } from '../user.model';
@@ -11,26 +11,27 @@ import { Subscription } from 'rxjs';
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.css']
 })
-export class AdminComponent implements OnInit,OnDestroy {
-logs: Log[];
-dat = '';
-searchText='';
-user: User;
-usersub: Subscription;
+export class AdminComponent implements OnInit, OnDestroy {
+  logs: Log[];
+  dat = '';
+  searchText = '';
+  user: User;
+  usersub: Subscription;
   constructor(private datastorage: DataStorageService,
-              private authService: AuthenticationService) { }
+              private authService: AuthenticationService
+    ) { }
 
   ngOnInit(): void {
-    this.usersub = this.authService.user.subscribe((user)=>{
-this.user = user;
+    this.usersub = this.authService.user.subscribe((user) => {
+      this.user = user;
     });
-    this.datastorage.getLog().subscribe((logs)=>{
+    this.datastorage.getLog().subscribe((logs) => {
       this.logs = logs;
 
     });
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.usersub.unsubscribe();
   }
 

@@ -38,15 +38,14 @@ export class DemandlistComponent implements OnInit, OnDestroy {
     });
     this.userSub = this.authService.user.subscribe((user) => {
       this.user = user;
-    })
+    });
+    // this.demands = this.demandService.getDemands();
     this.subscription = this.demandService.demandsChanged
       .subscribe(
         (demands: DemandDetails[]) => {
           this.demands = demands;
+          console.log(2,demands);
         });
-
-
-
      this.admin = this.authService.administrator;
     this.adminsub = this.authService.admin.subscribe(admin => {
       console.log(this.admin);

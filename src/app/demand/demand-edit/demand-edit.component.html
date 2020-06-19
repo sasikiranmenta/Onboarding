@@ -6,7 +6,7 @@
         <form [formGroup]="demandform" (ngSubmit) = "onSubmit()">
             <div class="row">
                 <div class="col-xs-12">
-                    <button type="submit" class="btn btn-success" [disabled]="!demandform.valid" >SAVE</button>
+                    <button type="submit" class="btn btn-success" >SAVE</button>
                     <button type="button" class=" btn btn-danger" (click) = "onClear()" >CANCEL</button>
                 </div>
             </div>

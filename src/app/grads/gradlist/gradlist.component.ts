@@ -8,7 +8,7 @@ import { LogService } from 'src/app/shared/log.service';
 import { formatDate } from '@angular/common';
 import { AuthenticationService } from 'src/app/authentication/auth.service';
 import { User } from 'src/app/authentication/user.model';
-import { DataStorageService } from 'src/app/shared/datastorage.service';
+
 @Component({
   selector: 'app-gradlist',
   templateUrl: './gradlist.component.html',
@@ -17,16 +17,15 @@ import { DataStorageService } from 'src/app/shared/datastorage.service';
 export class GradlistComponent implements OnInit, OnDestroy {
 
   constructor(private router: Router,
-              private route: ActivatedRoute,
-              private gradsService: GradsService,
-              private authService: AuthenticationService,
-              private logService: LogService,
-              private dataService: DataStorageService) { }
+    private route: ActivatedRoute,
+    private gradsService: GradsService,
+    private authService: AuthenticationService,
+    private logService: LogService, ) { }
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
     this.userSub.unsubscribe();
   }
-  
+
   grads: GradDetails[];
   subscription: Subscription;
   index = 0;
@@ -35,13 +34,13 @@ export class GradlistComponent implements OnInit, OnDestroy {
   date = formatDate(this.currentdate, 'yyyy-MM-dd', 'en');
   user: User;
   userSub: Subscription;
-  
+
 
 
   ngOnInit(): void {
-  this.userSub = this.authService.user.subscribe((user)=>{
-this.user = user;
-  })
+    this.userSub = this.authService.user.subscribe((user) => {
+      this.user = user;
+    })
     this.subscription = this.gradsService.gradsChanged
       .subscribe(
         (grads: GradDetails[]) => {
@@ -76,7 +75,7 @@ this.user = user;
 
   onDelete(grad: GradDetails) {
     this.gradsService.deletegrad(grad.id);
-    this.logService.addlog("Onboardee with " + grad.id + " has been deleted", this.date, this.user.id);
+    this.logService.addlog("Onboardee with id " + grad.id + " has been deleted", this.date, this.user.id);
     this.router.navigate(['/grads']);
   }
 }

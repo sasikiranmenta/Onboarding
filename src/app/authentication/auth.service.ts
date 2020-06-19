@@ -1,4 +1,4 @@
-import { BehaviorSubject, combineLatest, Subject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { User } from './user.model';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
@@ -6,11 +6,13 @@ import { Router } from '@angular/router';
 import { AuthService, GoogleLoginProvider } from 'angularx-social-login';
 import { Employee } from './employee.model';
 import { DataStorageService } from '../shared/datastorage.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
     providedIn: 'root'
 })
 export class AuthenticationService {
+    
 
     user = new BehaviorSubject<User>(null);
     id: number;
@@ -19,23 +21,26 @@ export class AuthenticationService {
     administrator = false;
     admin = new Subject<boolean>();
     constructor(private http: HttpClient, private socialAuthServ: AuthService,
-        private router: Router, private dataservice: DataStorageService) { }
+        private router: Router, private dataservice: DataStorageService,
+        private toastr: ToastrService) { }
 
     login(platform: string) {
         platform = GoogleLoginProvider.PROVIDER_ID;
         this.socialAuthServ.signIn(platform).then(response => {
-            console.log(this.employee[0].id);
+            console.log(response);
             for (let emp of this.employee) {
                 if (emp.email === response.email) {
-                    console.log("resp")
                     const user = new User(response.email, response.firstName, response.photoUrl, +emp.id); this.signupUser = user;
-                    this.user.next(user);
+                    this.senduser(user);
                     localStorage.setItem('userdata', JSON.stringify(user));
                     if (emp.role === "admin") {
                         this.administrator = true;
-                        this.admin.next(this.administrator);
+                        this.sendAdmin(this.administrator);
                     }
+                    this.show1(emp.name);
                     this.router.navigate(['/home']);
+                    
+
                     break;
                 }
                 else {
@@ -51,14 +56,15 @@ export class AuthenticationService {
             if (email === emp.email && pass === emp.pass) {
                 const user = new User(emp.email, emp.name, emp.photourl, +emp.id);
                 this.signupUser = user;
-                this.user.next(user);
+                this.senduser(user);
                 bool = true;
                 localStorage.setItem('userdata', JSON.stringify(user));
                 if (emp.role === "admin") {
                     this.administrator = true;
-                    this.admin.next(this.administrator);
+                    this.sendAdmin(this.administrator);
                 }
                 this.router.navigate(['/home']);
+                this.show1(emp.name);
                 break;
             }
         }
@@ -81,23 +87,29 @@ export class AuthenticationService {
         if (!userData) {
             return;
         }
-        this.user.next(userData);
+        this.senduser(userData);
     }
     logout() {
-        this.user.next(null);
+        this.senduser(null);
         this.router.navigate(['/']);
         localStorage.removeItem('userdata');
         this.administrator = false;
-        this.admin.next();
+        this.sendAdmin(this.administrator);
+        this.toastr.success('Successful','Log Out ',{timeOut:3000,positionClass: 'toast-bottom-right'});
+        
+           
+    
     }
-
+show1 (name: string){
+  this.toastr.success('Login Successful','welcome '+name,{timeOut:3000,positionClass: 'toast-bottom-right'});
+}
 
     addEmployee(emp: any) {
         console.log(emp);
         const employee = new Employee(emp.value.name, emp.value.pass, emp.value.email, emp.value.photourl);
         this.dataservice.addEmployee(employee).subscribe(() => {
             this.router.navigate(['/']);
-        }, () => { this.router.navigate(['/']); });
+        });
     }
 
 
@@ -109,13 +121,20 @@ export class AuthenticationService {
 
     }
 
-      getEmployee(id: number){
+    //   getEmployee(id: number){
       
         // this.dataservice.getEmployee(id).subscribe((employee)=>{
-        }
+        // }
     
 
+     senduser(user: User){
+        this.user.next(user);   
+     }
 
+     sendAdmin(admin: boolean)
+     {
+        this.admin.next(admin);
+     }
 
 
 }

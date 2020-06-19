@@ -15,7 +15,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   private usersub: Subscription;
   private adminsub: Subscription;
   admin = false;   // public loggedInStatus = JSON.parse(localStorage.getItem('userdata') || 'false');
-  constructor(private router: Router, private authenticationservice: AuthenticationService) { }
+  constructor(private router: Router, private authenticationservice: AuthenticationService,private grad: GradComponent) { }
   ngOnDestroy(): void {
     this.usersub.unsubscribe();
     this.adminsub.unsubscribe();
@@ -34,6 +34,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
   signout() {
     this.authenticationservice.logout();
+    this.grad.show();
   }
 
 

@@ -1,19 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Injectable } from '@angular/core';
 import { AuthService, GoogleLoginProvider } from 'angularx-social-login';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../auth.service';
 import { formatDate } from '@angular/common';
-import { Observable, BehaviorSubject } from 'rxjs';
-import { User } from '../user.model';
-import { FormGroup } from '@angular/forms';
-import { Employee } from '../employee.model';
 import { LogService } from 'src/app/shared/log.service';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
   selector: 'app-grad',
   templateUrl: './grad.component.html',
   styleUrls: ['./grad.component.css']
+})
+@Injectable({
+  providedIn: 'root'
 })
 export class GradComponent implements OnInit {
   
@@ -30,15 +30,18 @@ export class GradComponent implements OnInit {
   }
 
 
-  constructor(private socialAuthServ: AuthService, private router: Router, private authenticationservice: AuthenticationService,private logService: LogService) { }
+  constructor(private socialAuthServ: AuthService,
+     private router: Router,
+      private authenticationservice: AuthenticationService,
+      private logService: LogService,private toastr: ToastrService) { }
 
   login(platform: string) {
     this.authenticationservice.login(platform); 
   }
- 
-  private initform(){
-  }
- 
+show(){
+  //this.toastr.success('Logged Out','',{timeOut:3000});
+}
+
 
   onSubmit(){
     this.authenticationservice.log(this.email,this.pass);

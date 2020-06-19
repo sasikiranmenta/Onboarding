@@ -1,26 +1,37 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Socialusers } from '../authentication/socialusers.model'
 import { AuthService } from 'angularx-social-login';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { AuthenticationService } from '../authentication/auth.service';
+import { User } from '../authentication/user.model';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit,OnDestroy {
 
-  socialusers = new Socialusers();
-  constructor(public OAuth: AuthService, private router: Router) { }
-  ngOnInit() {
-    this.socialusers = JSON.parse(localStorage.getItem('socialusers'));
+  user: User;
+  sub: Subscription
+  constructor(private toastr: ToastrService, private authservice: AuthenticationService){}
+  
+  
+  ngOnDestroy() {
+   this.sub.unsubscribe();
   }
-  logout() {
-    alert(1);
-    this.OAuth.signOut().then(data => {
-      debugger;
-      this.router.navigate(['trends']);
+  
+  ngOnInit() {
+    this.sub = this.authservice.user.subscribe((user)=>
+    {
+this.user = user;
+//this.show();
     });
   }
+
+  
+  
 
 }

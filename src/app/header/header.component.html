@@ -6,7 +6,7 @@
         <ul class= "nav navbar-nav">
             <li routerLink ="/home" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"><a style="cursor: pointer;">HOME</a></li>
             <li routerLink ="/grads" *ngIf="isAuthenticated && admin" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" ><a style="cursor: pointer;" >ONBOARDING</a></li>
-            <li routerLink ="/demands" *ngIf="isAuthenticated  " routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" ><a style="cursor: pointer;">DEMAND</a></li>
+            <li routerLink ="/demands" *ngIf="isAuthenticated " routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" ><a style="cursor: pointer;">DEMAND</a></li>
             <li routerLink ="/trends" *ngIf="isAuthenticated "  routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"><a style="cursor: pointer;">TRENDS</a></li>
             <li routerLink ="/admin" *ngIf="isAuthenticated "  routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"><a style="cursor: pointer;">LOGS</a></li>
         </ul>

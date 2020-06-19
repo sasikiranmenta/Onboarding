@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+// import { Component, OnInit } from '@angular/core';
 
-@Component({
-  selector: 'app-demandempty',
-  templateUrl: './demandempty.component.html',
-  styleUrls: ['./demandempty.component.css']
-})
-export class DemandemptyComponent implements OnInit {
+// @Component({
+//   selector: 'app-demandempty',
+//   templateUrl: './demandempty.component.html',
+//   styleUrls: ['./demandempty.component.css']
+// })
+// export class DemandemptyComponent {
 
-  constructor() { }
+//   // constructor() { }
 
-  ngOnInit(): void {
-  }
+//   // ngOnInit(): void {
+//   // }
 
-}
+// }

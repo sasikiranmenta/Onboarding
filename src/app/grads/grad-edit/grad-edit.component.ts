@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 import { GradsService } from '../grads.service';
 import { GradDetails } from 'src/app/shared/grad.model';
-import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { formatDate } from '@angular/common';
 import { DataStorageService } from 'src/app/shared/datastorage.service';
 import { LogService } from 'src/app/shared/log.service';
@@ -10,7 +10,7 @@ import { AuthenticationService } from 'src/app/authentication/auth.service';
 import { User } from 'src/app/authentication/user.model';
 import { Subscription } from 'rxjs';
 import { DemandDetails } from 'src/app/shared/demand.model';
-import { DemandService } from 'src/app/demand/demand.service';
+
 
 @Component({
   selector: 'app-grad-edit',
@@ -39,7 +39,7 @@ export class GradEditComponent implements OnInit, OnDestroy {
     private datastorage: DataStorageService,
     private logService: LogService,
     private authService: AuthenticationService,
-    private demandService: DemandService
+    
   ) { }
   ngOnDestroy(): void {
     this.userSub.unsubscribe();
@@ -132,7 +132,7 @@ export class GradEditComponent implements OnInit, OnDestroy {
 
     } else {
       this.gradsService.addGrad(this.gradform.value);
-      this.logService.addlog("new onboardee has been created ", this.date,this.user.id);
+      this.logService.addlog("onboardee has been created with name "+this.gradform.controls.name.value, this.date,this.user.id);
     }
     this.router.navigate(['/grads']);
   }

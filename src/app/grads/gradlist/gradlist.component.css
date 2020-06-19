@@ -1,15 +1,12 @@
-.btn-success{
-    background: rgb(141, 141, 141);
-    
-}
-
 .glyphicon-trash
 {
    
-    color: rgb(141, 141, 141);
+    color: rgba(255, 43, 43, 0.795);
+  
 }
 
 .glyphicon-edit{
-    color: rgb(141, 141, 141);
+    
+    color: rgb(91, 182, 94);
 
 }

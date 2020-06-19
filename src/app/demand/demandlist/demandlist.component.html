@@ -25,12 +25,12 @@
         </thead>
         <tbody>
             <tr *ngFor="let demand of demands; let i= index">
-                <td *ngIf="this.user.id === demand.empid" >{{ demand.demandid }}</td>
-                <td *ngIf="this.user.id === demand.empid">{{ demand.location }}</td>
-                <td *ngIf="this.user.id === demand.empid">{{ demand.skills }}</td>
-                <td *ngIf="this.user.id === demand.empid">{{ demand.start }}</td>
-                <td *ngIf="this.user.id === demand.empid">{{ demand.count }}</td>
-                <td *ngIf="this.user.id === demand.empid">{{ demand.status }}</td>
+                <td *ngIf="this.user.id === demand.empid || admin" >{{ demand.demandid }}</td>
+                <td *ngIf="this.user.id === demand.empid || admin">{{ demand.location }}</td>
+                <td *ngIf="this.user.id === demand.empid || admin">{{ demand.skills }}</td>
+                <td *ngIf="this.user.id === demand.empid || admin">{{ demand.start }}</td>
+                <td *ngIf="this.user.id === demand.empid || admin">{{ demand.count }}</td>
+                <td *ngIf="this.user.id === demand.empid || admin">{{ demand.status }}</td>
                 <td *ngIf="!admin && this.user.id === demand.empid">
                     <a style="cursor: pointer;"[routerLink]= i ><span class="glyphicon glyphicon-edit"></span>
                     </a>

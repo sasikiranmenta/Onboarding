@@ -3,8 +3,9 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from '../user.model';
 import { AuthenticationService } from '../auth.service';
-import { LogService } from 'src/app/shared/log.service';
+
 import { formatDate } from '@angular/common';
+
 
 @Component({
   selector: 'app-signup',
@@ -16,9 +17,10 @@ export class SignupComponent implements OnInit {
   employeeForm: FormGroup;
   currentdate = new Date();
   date = formatDate(this.currentdate, 'yyyy-MM-dd', 'en');
-  constructor(private route: ActivatedRoute, private router: Router, private authenticationService: AuthenticationService, private logService: LogService) { }
+  constructor(private route: ActivatedRoute, private router: Router, private authenticationService: AuthenticationService) { }
   fromlogin =false;
   ngOnInit(): void {
+    
     this.initForm();
     
   }

@@ -4,7 +4,7 @@ export class Employee{
     pass: string;
     email: string;
     photourl: string;
-    role: string;
+   public role: string;
     constructor(name: string, pass: string, email: string, photourl: string)
     {
        this.name = name;

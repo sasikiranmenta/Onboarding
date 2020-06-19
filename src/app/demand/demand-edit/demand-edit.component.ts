@@ -28,29 +28,23 @@ export class DemandEditComponent implements OnInit, OnDestroy {
   date = formatDate(this.currentdate, 'yyyy-MM-dd', 'en');
 
   constructor(private router: Router,
-              private route: ActivatedRoute,
-              private demandservice: DemandService,
-              private datastorage: DataStorageService,
-              private logService: LogService,
-              private authService: AuthenticationService) { }
-  ngOnDestroy(): void {
-    this.userSub.unsubscribe();
-  }
+    private route: ActivatedRoute,
+    private demandservice: DemandService,
+    private logService: LogService,
+    private authService: AuthenticationService) { }
+
 
   ngOnInit(): void {
-    this.userSub = this.authService.user.subscribe((user)=>{
+    this.userSub = this.authService.user.subscribe((user) => {
       this.user = user;
-        })
-    this.demandservice.setDemands();
+    });
+
     this.route.params.subscribe((params: Params) => {
       this.id = +params['id'];
       this.editmode = params['id'] != null;
       this.initform();
-      this.userSub = this.authService.user.subscribe((user)=>{
-              this.user = user;
-      });
-
     });
+
   }
 
   private initform() {
@@ -87,21 +81,24 @@ export class DemandEditComponent implements OnInit, OnDestroy {
     });
   }
 
-  onSubmit(){
-    if(this.editmode){
-      this.demandservice.updateDemand(this.demand1.demandid,this.demandform.value);
-      this.logService.addlog("demand with id "+this.demand1.demandid+"has been updated", this.date,this.user.id);
-    }else{
+  onSubmit() {
+    if (this.editmode) {
+      this.demandservice.updateDemand(this.demand1.demandid, this.demandform.value);
+      this.logService.addlog("demand for skill->" + this.demandform.controls.skills.value + " at " + this.demandform.controls.location.value + " has been updated", this.date, this.user.id);
+    } else {
       this.demandservice.addDemand(this.demandform.value);
-      this.logService.addlog("new demand has been created", this.date,this.user.id);
-      
+      this.logService.addlog("new demand has been created for skill->" + this.demandform.controls.skills.value + " at " + this.demandform.controls.location.value, this.date, this.user.id);
     }
     this.router.navigate(['/demands']);
   }
 
-  onClear(){
+  onClear() {
     this.demandform.reset();
     this.router.navigate(['/demands']);
+  }
+
+  ngOnDestroy(): void {
+    this.userSub.unsubscribe();
   }
 
 }

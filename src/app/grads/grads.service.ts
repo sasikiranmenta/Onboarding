@@ -5,6 +5,7 @@ import { DataStorageService } from '../shared/datastorage.service';
 import { GradPutDetails } from '../shared/gradput.model';
 import { DemandputDetails } from '../shared/demandput.model';
 import { DemandDetails } from '../shared/demand.model';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Injectable({
@@ -15,7 +16,7 @@ export class GradsService {
 
     gradsChanged = new Subject<GradDetails[]>();
 
-    constructor(private dataservice: DataStorageService) { }
+    constructor(private dataservice: DataStorageService, private toastr: ToastrService) { }
 
     private grads: GradDetails[] ;
 
@@ -47,7 +48,7 @@ export class GradsService {
             this.setGrads();
         },() =>{this.setGrads();});
         
-        
+        this.toastr.success(grad.name+' has been added','New Onboardee has been created Succesfully',{timeOut:3000,positionClass: 'toast-bottom-right'});
         
         
 
@@ -61,6 +62,7 @@ export class GradsService {
         },()=>{
             this.setGrads();
         });
+        this.toastr.success(grad.name+' has been changed','Changes updated Succesfully',{timeOut:3000,positionClass: 'toast-bottom-right'});
         
     }
 
@@ -70,16 +72,21 @@ export class GradsService {
         },()=>{
             this.setGrads();
         });
+        this.toastr.success('','Deleted Succesfully',{timeOut:3000,positionClass: 'toast-bottom-right'});
     
     }
 
     setGrads() {
         this.dataservice.fetchGrads().subscribe( grads  => {
                 this.grads = grads;
-                this.gradsChanged.next(this.grads.slice());
+                this.sendGrads(this.grads);
             }
         );
         
+    }
+
+    sendGrads(grads: GradDetails[]){
+        this.gradsChanged.next(grads);
     }
 
 

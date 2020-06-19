@@ -3,6 +3,7 @@ import { DemandDetails } from '../shared/demand.model';
 import { Subject } from 'rxjs';
 import { DataStorageService } from '../shared/datastorage.service';
 import { DemandputDetails } from '../shared/demandput.model';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
     providedIn: 'root'
@@ -11,9 +12,9 @@ export class DemandService {
 
     demandsChanged = new Subject<DemandDetails[]>();
 
-    constructor(private dataservice: DataStorageService) { }
+    constructor(private dataservice: DataStorageService,private toastr: ToastrService) { }
 
-    private demands: DemandDetails[];
+    public demands: DemandDetails[];
 
     getDemand(index: number) {
         return this.demands[index];
@@ -26,7 +27,7 @@ export class DemandService {
             this.setDemands();
         });
        
-
+        this.toastr.success('','Deleted Succesfully',{timeOut:3000,positionClass: 'toast-bottom-right'});
     }
     getDemands() {
         return this.demands.slice();
@@ -38,27 +39,32 @@ export class DemandService {
         },()=>{
             this.setDemands();
         });
-        
+        this.toastr.success('demand for '+demand.skills+' at '+demand.location+' has been created' ,'New Demand added Succesfully',{timeOut:3000,positionClass: 'toast-bottom-right'});
 
     }
 
     updateDemand(index: number, demand: DemandputDetails) {
-        console
+        
         this.dataservice.updateDemand(index, demand).subscribe(()=>{
             this.setDemands();
         },()=>{
             this.setDemands();
         });
-        
+        this.toastr.success('demand for '+demand.skills+' at '+demand.location+' has been changed','Updated Succesfully',{timeOut:3000,positionClass: 'toast-bottom-right'});
     }
 
     setDemands() {
         this.dataservice.fetchDemand().subscribe(demands => {
             this.demands = demands;
-            this.demandsChanged.next(this.demands.slice());
+            this.demandsChanged.next(demands);
+            //this.sendDemands(this.demands);
             });
             
 
 
+    }
+
+    sendDemands(demands: DemandDetails[]){
+        this.demandsChanged.next(demands);
     }
 }

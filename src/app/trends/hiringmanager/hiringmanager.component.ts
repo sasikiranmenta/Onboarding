@@ -8,8 +8,8 @@ import { Trendservice } from '../trends.service';
 })
 export class HiringmanagerComponent implements OnInit {
   myMapHm = new Map();
-
-  data = [10, 6, 0];
+data = [10, 6, 0];
+  
 
   constructor(private trendsService: Trendservice) { }
   public barChartOptions = {

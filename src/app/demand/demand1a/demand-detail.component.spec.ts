@@ -1,20 +1,20 @@
 // import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-// import { GradItemComponent } from './grad-item.component';
+// import { DemandDetailComponent } from './demand-detail.component';
 
-// describe('GradItemComponent', () => {
-//   let component: GradItemComponent;
-//   let fixture: ComponentFixture<GradItemComponent>;
+// describe('DemandDetailComponent', () => {
+//   let component: DemandDetailComponent;
+//   let fixture: ComponentFixture<DemandDetailComponent>;
 
 //   beforeEach(async(() => {
 //     TestBed.configureTestingModule({
-//       declarations: [ GradItemComponent ]
+//       declarations: [ DemandDetailComponent ]
 //     })
 //     .compileComponents();
 //   }));
 
 //   beforeEach(() => {
-//     fixture = TestBed.createComponent(GradItemComponent);
+//     fixture = TestBed.createComponent(DemandDetailComponent);
 //     component = fixture.componentInstance;
 //     fixture.detectChanges();
 //   });
